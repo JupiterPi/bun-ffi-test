@@ -17,10 +17,10 @@ try {
     process.exit(0);
 } catch {}
 
-// rename ffi.dylib (macos)
+// rename libffi.dylib (macos)
 try {
-    require("fs").renameSync("./target/release/ffi.dylib", "./target/ffi-binary");
-    console.log("Renamed target/release/ffi.dylib to target/ffi-binary");
+    require("fs").renameSync("./target/release/libffi.dylib", "./target/ffi-binary");
+    console.log("Renamed target/release/libffi.dylib to target/ffi-binary");
     process.exit(0);
 } catch {}
 
