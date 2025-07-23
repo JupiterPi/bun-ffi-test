@@ -12,8 +12,8 @@ try {
 
 // rename libffi.so
 try {
-    require("fs").renameSync("./target/release/libffi.so", "./target/libffi-binary");
-    console.log("Renamed target/release/libffi.so to target/libffi-binary");
+    require("fs").renameSync("./target/release/libffi.so", "./target/ffi-binary");
+    console.log("Renamed target/release/libffi.so to target/ffi-binary");
     process.exit(0);
 } catch {}
 
