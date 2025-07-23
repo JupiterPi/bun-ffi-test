@@ -30,9 +30,9 @@ jobs:
       - run: sudo apt install libdbus-1-dev pkg-config
         if: ${{ matrix.os == 'ubuntu-latest' }}
       - run: bun run compile
-      - name: Rename binaries to include platform
-        run: bun -e "['cli', 'cli.exe'].forEach(name => { if (fs.existsSync('dist/'+name)) fs.renameSync('dist/'+name, 'dist/'+name+'-${{ matrix.target }}') })"
+      #- name: Rename binaries to include platform
+      #  run: bun -e "['cli', 'cli.exe'].forEach(name => { if (fs.existsSync('dist/'+name)) fs.renameSync('dist/'+name, 'dist/'+name+'-${{ matrix.target }}') })"
       - uses: actions/upload-artifact@v4
         with:
           name: cli-${{ matrix.target }}
-          path: dist/cli-*
+          path: dist/cli*
