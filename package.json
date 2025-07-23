@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build-ffi": "cd ffi && cargo build --release && bun run rename-ffi-binary.js && cd ..",
-    "compile": "bun run build-ffi && bun run build --compile --target=bun --sourcemap src/index.ts --outfile dist/cli"
+    "compile": "bun run build-ffi && bun build --compile --target=bun --sourcemap src/index.ts --outfile dist/cli"
   },
   "devDependencies": {
     "@types/bun": "latest"
