@@ -1,0 +1,34 @@
+name: Build binaries
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-publish-binaries:
+    name: Build binaries (${{ matrix.target }})
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            target: win
+          - os: ubuntu-latest
+            target: linux
+          - os: macos-latest
+            target: macos
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v2
+        with:
+            bun-version: latest
+      - run: bun install
+      - run: bun run compile
+      - name: Attach binaries to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/cli*
