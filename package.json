@@ -3,9 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "build-ffi": "cd ffi && cargo build --release && cd ..",
-    "start": "bun run src/index.js",
-    "build": "bun build --compile --sourcemap src/index.ts --outfile cli"
+    "build-ffi": "cd ffi && cargo build --release && bun run rename-ffi-binary.js && cd ..",
+    "compile": "bun run build-ffi && bun run build --compile --target=bun --sourcemap src/index.ts --outfile dist/cli"
   },
   "devDependencies": {
     "@types/bun": "latest"
