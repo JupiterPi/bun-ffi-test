@@ -1,0 +1,16 @@
+{
+  "name": "bun-ffi-test",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "build-ffi": "cd ffi && cargo build --release && cd ..",
+    "start": "bun run src/index.js",
+    "build": "bun build --compile --sourcemap src/index.ts --outfile cli"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

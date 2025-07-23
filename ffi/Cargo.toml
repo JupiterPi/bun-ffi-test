@@ -1,0 +1,14 @@
+[package]
+name = "filen-cli-ffi"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "ffi"
+path = "lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+keyring = { version = "3", features = ["apple-native", "windows-native", "sync-secret-service"] }
+rand = "0.8"
+hex = "0.4"
