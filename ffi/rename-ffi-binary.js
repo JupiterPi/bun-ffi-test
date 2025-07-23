@@ -3,17 +3,24 @@
 // This is necessary to ensure that the path to the binary is consistent across different platforms
 // and can be imported with at static path from ffi.ts
 
-// rename ffi.dll
+// rename ffi.dll (win)
 try {
     require("fs").renameSync("./target/release/ffi.dll", "./target/ffi-binary");
     console.log("Renamed target/release/ffi.dll to target/ffi-binary");
     process.exit(0);
 } catch {}
 
-// rename libffi.so
+// rename libffi.so (linux)
 try {
     require("fs").renameSync("./target/release/libffi.so", "./target/ffi-binary");
     console.log("Renamed target/release/libffi.so to target/ffi-binary");
+    process.exit(0);
+} catch {}
+
+// rename ffi.dylib (macos)
+try {
+    require("fs").renameSync("./target/release/ffi.dylib", "./target/ffi-binary");
+    console.log("Renamed target/release/ffi.dylib to target/ffi-binary");
     process.exit(0);
 } catch {}
 
