@@ -31,7 +31,7 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
       - run: bun run compile
       - name: Rename binaries to include platform
-        run: bun -e "['cli', 'cli.exe'].forEach(name => { if (fs.existsSync(`dist/${name}`)) fs.renameSync(`dist/${name}`, `dist/${name}-${{ matrix.target }}`) })"
+        run: bun -e "['cli', 'cli.exe'].forEach(name => { if (fs.existsSync('dist/'+name)) fs.renameSync('dist/'+name, 'dist/'+name+'-${{ matrix.target }}') })"
       - name: Attach binaries to release
         uses: softprops/action-gh-release@v2
         with:
